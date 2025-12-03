@@ -5,13 +5,14 @@ sidebarTitle: "Migrate from Tiny SFTP to Buru SFTP"
 
 This guide explains how to transfer your configuration from the Tiny SFTP Server to the Buru SFTP Server.
 
-Because the Tiny SFTP Server uses a simple XML configuration file, no automated export tool is available. You must manually retrieve your settings from the configuration file and apply them to the Buru version using the Web Administration dashboard.
+Since the Tiny SFTP Server uses a simple XML configuration file, no automated export tool is available. You must manually retrieve your settings from the configuration file and apply them to the Buru version using the Web Administration dashboard.
 
 ## Prerequisites
 
 To perform the migration, you need the following:
 
-* Access to the `RebexTinySftpServer.exe.config` file. This is located in the same folder as the Tiny SFTP executable.
+* Access to the `RebexTinySftpServer.exe.config` file. 
+  * This file is located in the same folder as the Tiny SFTP executable.
 * The [Buru SFTP Server installer](https://www.rebex.net/buru-sftp-server/download/).
 * Administrative privileges to install the Buru SFTP Server as a Windows Service.
 
@@ -39,12 +40,12 @@ To perform the migration, you need the following:
     </configuration>
     ```
 
-    3.  Locate the `<appSettings>` section.
+    3.  In the configuration file, locate the `<appSettings>` section.
     4.  Record the values for the following keys:
         * `userName`: Your current username.
         * `userPassword`: Your current password (stored in clear text).
         * `userRootDir`: The path to the folder you are sharing.
-        * `sshPort`: The port the server listens on (default is 22).
+        * `sshPort`: The port the server listens on (default is `22`).
         * `userPublicKeyDir`: The folder containing public keys (if used).
 
     <Note>
@@ -96,8 +97,8 @@ To perform the migration, you need the following:
     When the Buru SFTP Server configuration wizard opens, you can start the configuration, add the primary user, and migrate the configurations used in the Tiny SFTP Server:
 
     1.  Select the server edition and click **Next**. You can use the **Trial** edition for this migration.
-    2.  For "Register SSH/SFTP server as a Windows service," use the default options and click **Next**.
-    3.  For the **SSH/SFTP endpoint configuration**, you can use the default settings. If your Tiny SFTP Server configuration used a custom `sshPort` (other than 22), you can configure it here or update it later in the Web Administration.
+    2.  For **Register SSH/SFTP server as a Windows service**, use the default options and click **Next**.
+    3.  For the **SSH/SFTP endpoint configuration**, you can use the default settings. If your Tiny SFTP Server configuration used a custom `sshPort` (other than `22`), you can configure it here or update it later in the Web Administration.
     4.  Enable **Web Administration** to activate the browser-based dashboard. We recommend enabling it and configuring the **Username** and **Password**.
     5.  For the Web Administration, use the default settings and click **Next**. It will be available at `http://localhost:8880`.
     6.  You will reach the **Add user** step. Use the values you retrieved from the config file in Step 1 to configure the user:
@@ -173,7 +174,7 @@ To perform the migration, you need the following:
             * **Server log**: Configure the directory path where general server logs will be stored.
             * **Access log**: Configure the directory path specifically for tracking user access and file operations.
         3.  Select the detail level for the logs from the **Minimum log level** dropdown menu.
-        4.  Set the **Keep at most** size limit to manage disk usage (default is 0, which keeps files forever). You can click "keep all files" to reset this.
+        4.  Set the **Keep at most** size limit to manage disk usage (default is `0`, which keeps files forever). You can click "keep all files" to reset this.
         5.  Click **Save**.
       </Step>
       <Step title="IP Access Control">
@@ -189,8 +190,8 @@ To perform the migration, you need the following:
         To refine user access rights or enable public keys:
 
         1.  Click **Users** in the sidebar.
-        2.  Click on the **Username** you migrated (e.g., "tester").
-        3.  To update user permissions, under the **SFTP / SFTP path mappings** section, click the pencil icon and update the access rights to grant specific permissions like Read, Write, or Delete.
+        2.  Click on the **Username** you migrated (for example, "tester").
+        3.  To update user permissions, under the **SFTP/SFTP path mappings** section, click the pencil icon and update the access rights to grant specific permissions like Read, Write, or Delete.
         4.  To update authentication, under **Authentication settings**, enable **Public key authentication**. Then, add the **public key file** and the **public key** if you intend to use SSH keys.
 
         ![User configuration](../images/user-configuration.png)
@@ -200,10 +201,10 @@ To perform the migration, you need the following:
   <Step title="Verify the Connection">
     To ensure the migration was successful, connect to the Buru SFTP Server using an SFTP client.
 
-    1.  Ensure the Tiny server is closed to avoid port conflicts (especially if both use port 22).
-    2.  Open your preferred SFTP client. Check the [documentation](https://www.rebex.net/doc/buru-sftp-server/getting-started/03-connect/) to explore available options.
-    3.  Enter the **Hostname** (e.g., `localhost`).
-    4.  Enter the **Port number** (use the value from `sshPort`, or 22 if you used the default value).
+    1.  Ensure the Tiny server is closed to avoid port conflicts (especially if both use port `22`).
+    2.  Open your preferred SFTP client. [Check the documentation](https://www.rebex.net/doc/buru-sftp-server/getting-started/03-connect/) to explore available options.
+    3.  Enter the **Hostname** (for example, `localhost`).
+    4.  Enter the **Port number** (use the value from `sshPort`, or `22` if you used the default value).
     5.  Enter the **Username** and **Password**.
 
         ![WinSCP connection](../images/winscp.png)
