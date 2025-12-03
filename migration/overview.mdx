@@ -1,0 +1,104 @@
+---
+title: "Overview"
+---
+
+The **Tiny SFTP Server** is designed as a minimalist tool for quick, simple file transfer tasks. It requires no installation, runs as a standard desktop application, and is ideal for ad-hoc usage.
+
+However, as your needs evolve, requiring robust security, automation, or multiple user accounts, you may encounter the intentional architectural limits of the Tiny edition. The **Buru SFTP Server** is built to address these advanced scenarios, offering a scalable, secure, and production-ready SFTP solution.
+
+<Tip>
+  **Already decided to upgrade?**
+  
+  If you are ready to move to Buru SFTP Server, you can skip this comparison and go straight to the [Migration Guide](./migration-tiny-to-buru) to start transferring your configuration immediately.
+</Tip>
+
+## Security and Authentication
+
+Tiny SFTP Server is designed for testing and simple transfers where high security is not the primary constraint. It stores passwords in a clear-text configuration file and displays the current password directly on the server's main form. Consequently, it is not recommended for use with real passwords or sensitive production environments.
+
+Buru SFTP Server addresses these risks with enterprise-grade features:
+
+<CardGroup cols={3}>
+<Card title="Secure Storage" icon="shield-check">
+Passwords are hashed and securely stored, ensuring they are never kept in clear text.
+</Card>
+<Card title="Windows Authentication" icon="windows">
+Integrate directly with existing Windows user accounts instead of managing separate credentials.
+</Card>
+<Card title="SSH Support" icon="terminal">
+In addition to SFTP, Buru supports the SSH protocol for secure command execution.
+</Card>
+</CardGroup>
+
+## Automation and Availability
+
+Tiny SFTP Server runs as a standard Windows desktop application. It requires a user to log in and manually start the executable. If the user logs out or the application is closed, the server stops, making it unsuitable for unattended background operations.
+
+Buru SFTP Server runs as a Windows Service, ensuring:
+
+<CardGroup cols={3}>
+<Card title="Auto-Start" icon="power-off">
+The server starts automatically with the operating system.
+</Card>
+<Card title="Background Run" icon="server">
+Runs continuously in the background even when no user is logged in.
+</Card>
+<Card title="High Availability" icon="clock">
+Suitable for 24/7 availability requirements.
+</Card>
+</CardGroup>
+
+## Scalability 
+
+Tiny SFTP Server is limited to a single user account and a single mapped root directory. This restriction simplifies the configuration for quick tasks but prevents usage in team environments.
+
+Buru SFTP Server is built for growth:
+
+<CardGroup cols={3}>
+<Card title="Unlimited Users" icon="users">
+Create distinct accounts for different team members or clients.
+</Card>
+<Card title="Granular Permissions" icon="lock">
+Assign different access rights (e.g., read-only vs. write access) to specific users.
+</Card>
+<Card title="Unlimited Mapped Folders" icon="folder-tree">
+Configure complex virtual file systems, mapping multiple directories from different locations to a single user session.
+</Card>
+</CardGroup>
+
+## Monitoring and Administration
+
+Tiny SFTP Server offers a minimal interface with no detailed logging capabilities. If you need to debug connection issues or audit file access history, the necessary data is not available.
+
+Buru SFTP Server includes management tools:
+
+<CardGroup cols={3}>
+<Card title="Log Files" icon="file-lines">
+Detailed text logs allow you to monitor server activity and troubleshoot issues.
+</Card>
+<Card title="Web Administration" icon="browser">
+Manage the server remotely via a browser-based dashboard without editing config files manually.
+</Card>
+<Card title="Command Line" icon="code">
+Advanced users can script and automate server management tasks via the CLI.
+</Card>
+</CardGroup>
+
+## Comparison Summary
+
+The following table summarizes the capabilities of both editions.
+
+| Feature | Tiny SFTP Server | Buru SFTP Server |
+| :--- | :--- | :--- |
+| **Primary Use Case** | Ad-hoc transfers, Testing | Production, Services, Multi-user |
+| **Running Mode** | Desktop Application | Windows Service and Application |
+| **Max Users** | 1 | Unlimited |
+| **Max Mapped Folders**| 1 | Unlimited |
+| **Password Storage** | Clear-text (Insecure) | Secure Hash |
+| **Protocols** | SFTP | SFTP, SSH, FTP |
+| **Authentication** | Internal only | Internal and Windows Auth |
+| **Administration** | Config file | Web Admin, CLI, Config file |
+
+## Next Steps
+
+If your current usage requires the security, stability, or features listed above, we recommend upgrading to Buru SFTP Server. Follow the [Migration Guide](./migration-tiny-to-buru) to transfer your existing configuration to Buru SFTP Server.
